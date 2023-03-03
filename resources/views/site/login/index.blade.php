@@ -44,7 +44,7 @@
                         @csrf
                       <div class="row">
                         <div class="col-md-12 form-group">
-                          <input name="username" :value="old('username')" type="text" class="form-control" placeholder="Usuario" minlength="4" maxlength="10" required>
+                          <input name="username" :value="old('username')" type="text" class="form-control" placeholder="Usuario" minlength="4" maxlength="14" required>
                         </div>
                         <div class="col-md-12 form-group">
                           <input name="password" type="password" class="form-control" placeholder="Senha" minlength="8" maxlength="16" required>

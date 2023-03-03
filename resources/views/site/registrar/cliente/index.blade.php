@@ -43,9 +43,7 @@
                     <form class="text-center" action="{{ route('admin.registrar.store') }}" method="post">
                         @csrf
                       <div class="row">
-                        <div class="col-md-12 form-group">
-                          <input name="bi" type="text" class="form-control" placeholder="nº Bilhete de Identidade" minlength="14" maxlength="14" >
-                        </div>
+                       
                         <div class="col-md-12 form-group">
                           <input name="name"
                           value="{{ isset($user->name) ? $user->name : old('name') }}"type="text" class="form-control" placeholder="Nome Completo" site/assets>

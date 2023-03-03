@@ -20,6 +20,7 @@
             <!-- Left side columns -->
             <div class="col-lg-8">
                 <div class="row">
+                    gggggggggggg
                     @if (Auth::user()->level == 'Administrador-Master')
                         <!-- Sales Card -->
                         <div class="col-xxl-4 col-md-6">
@@ -86,6 +87,9 @@
 
                         </div><!-- End Customers Card -->
                     @endif
+
+                    ffffffffffffffffffffff
+
                     <!-- Reports -->
                     <div class="col-12">
                         <div class="card">
