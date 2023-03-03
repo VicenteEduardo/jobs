@@ -35,7 +35,7 @@
                                         <div class="col-md-7">
                                             <h4 class="mb-1">{{ $user->email }}</h4>
                                             <p class="small mb-3">
-                                                <span class="badge badge-dark">Data de Criação:
+                                                <span class="">Data de Criação:
                                                     {{ $user->created_at }}</span>
                                             </p>
                                         </div>
@@ -82,8 +82,9 @@
             <h4>Registo de Actividades</h4>
         </div>
         <div class="card-body">
-            <table class="table datatables table-hover table-bordered" id="dataTable-1">
-                <thead class="bg-primary">
+
+            <table class="table table-borderless datatable">
+                <thead>
                     <tr class="text-center">
                         <th>ID</th>
                         <th>NIVEL</th>
@@ -93,26 +94,17 @@
                         <th>DESCRIÇÃO</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white">
+                <tbody>
 
                     @foreach ($logs as $item)
-                        <tr class="text-center ">
+                        <tr >
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->level }} </td>
                             <td>{{ $item->REMOTE_ADDR }} </td>
 
                             <td class="text-left">{{ $item->created_at }} </td>
                             <td class="text-left">{{ $item->message }} </td>
-                            {{-- <td>
-                                <button type="button" class="btn btn-dark" data-toggle="modal"
-                                    data-target="#logs{{ $item->id }}">
-                                    VER
-                                </button>
-                            </td> --}}
-                        </tr>
-                        {{-- @include('extra.modals.logs.index') --}}
                     @endforeach
-
                 </tbody>
             </table>
         </div>
