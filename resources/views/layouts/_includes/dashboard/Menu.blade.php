@@ -163,14 +163,17 @@
             </li><!-- Empresas -->
 
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.registroActividades.detalhes', Auth::user()->id) }}">
-                    <i class="bi bi-calendar-check"></i>
-                    <span>Registro de Actividades</span>
-                </a>
-            </li><!-- Actividades -->
+
     </ul>
 
+
+    @endif
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('admin.registroActividades.detalhes', Auth::user()->id) }}">
+            <i class="bi bi-calendar-check"></i>
+            <span>Registro de Actividades</span>
+        </a>
+    </li><!-- Actividades -->
 </aside><!-- End Sidebar-->
-@endif
+
 <main id="main" class="main">

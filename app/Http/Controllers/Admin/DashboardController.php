@@ -113,6 +113,8 @@ class DashboardController extends Controller
            $response['cliente']= User::where('level','=','cliente')->count();
            $response['Administrador']= User::where('level','=','Administrador')->count();
            $response['vagas'] = Vaga::count();
+
+
             return view('admin.home.index', $response);
 
         }
