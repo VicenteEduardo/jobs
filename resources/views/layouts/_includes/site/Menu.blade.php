@@ -13,7 +13,14 @@
         <li><a class="nav-link scrollto active" href="{{ route('site.home') }}">Home</a></li>
         <li><a class="nav-link scrollto" href="{{ route('site.sobre') }}">Sobre</a></li>
         <li><a class="nav-link scrollto" href="{{ route('site.vagas') }}">Vagas</a></li>
+
+
+        @if(isset(Auth::user()->level))
+        <li><a class="getstarted scrollto" href="{{ route('admin.home') }}">{{ Auth::user()->name }}</a></li>
+        @else
         <li><a class="getstarted scrollto" href="{{ route('site.login') }}">Iniciar Sessão</a></li>
+        @endif
+
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

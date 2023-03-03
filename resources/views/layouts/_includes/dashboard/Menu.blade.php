@@ -9,6 +9,12 @@
                 <span>Dashboard</span>
             </a>
         </li><!-- Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link " target="_blank" href="{{ route('site.home') }}">
+                <i class="bi bi-grid"></i>
+                <span>Ir ao Site</span>
+            </a>
+        </li><!-- Dashboard -->
 
 
 
