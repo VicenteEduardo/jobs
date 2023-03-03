@@ -30,6 +30,12 @@ class InscricoesClienteController extends Controller
     public function inscricao(Request $request)
     {
 
+        $request->validate([
+            'categoria' => 'required',
+
+
+
+        ]);
         if(Auth::user()->level == "cliente"){
             $vaga = Vaga::find($request->id_vaga);
 

@@ -42,11 +42,12 @@
                 <form method="POST" action="{{ route('admin.buscar.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-lg-9 d-md-flex">
-                        <input name="emprego" class="form-control input-rounded mr-auto mb-md-0 mb-3" type="text"
+                        <input required name="emprego" class="form-control input-rounded mr-auto mb-md-0 mb-3" type="text"
                             placeholder="procure uma vaga para voçê">
-                        <a href="javascript:void(0);" class="btn btn-primary btn-rounded"><i
-                                class="las la-search scale5 mr-3"></i>Buscar</a>
-                    </div>
+
+                            <button class="btn btn-primary btn-rounded" type="submit"> <i
+                                class="las la-search scale5 mr-3"></i>Buscar</button>
+                                      </div>
             </div>
 
             <div class="d-flex flex-wrap mb-4 align-items-center search-filter">

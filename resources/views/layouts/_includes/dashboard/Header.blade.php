@@ -33,6 +33,7 @@
     {{-- sweetalert --}}
     <link rel="stylesheet" href="/css/sweetalert2.css">
     <script src="/js/sweetalert2.all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- =======================================================
   * Template Name: NiceAdmin - v2.2.2
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
