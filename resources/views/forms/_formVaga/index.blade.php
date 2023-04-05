@@ -10,20 +10,20 @@
 
 <div class="col-lg-6">
     <label for="img" class="form-label">Imagem da Empresa</label>
-    <input type="file" class="form-control" id="inputGroupPrepend2"
-    aria-describedby="inputGroupPrepend2" name="imagemEmprego" />
+    <input type="file" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2"
+        name="imagemEmprego" />
 </div>
 
 <div class="col-lg-6">
     <label for="nivel" class="form-label">Nome da empresa</label>
-     <select type="text" name="nomeEmresa" id="sub_category_name" class="form-control border rounded">
-                        <option>selecione uma opção</option>
-                        @foreach ($minhasEmpresas as $item)
-                            <option value="{{ $item->nomeEmpresa }}">
-                                {{ $item->nomeEmpresa }}
-                            </option>
-                        @endforeach
-                    </select>
+    <select type="text" name="nomeEmresa" id="sub_category_name" class="form-control border rounded">
+        <option>selecione uma opção</option>
+        @foreach ($minhasEmpresas as $item)
+            <option value="{{ $item->nomeEmpresa }}">
+                {{ $item->nomeEmpresa }}
+            </option>
+        @endforeach
+    </select>
 </div>
 
 <div class="col-lg-6">
@@ -37,25 +37,24 @@
 <div class="col-lg-6">
     <label for="username" class="form-label">Nº Telefone</label>
 
-    <select id="sub_category" type="text" name="telefoneEmprego" id="acronym"
-    class="form-control border rounded">
+    <select id="sub_category" type="text" name="telefoneEmprego" id="acronym" class="form-control border rounded">
 
-</select>
+    </select>
 </div>
 
 <div class="col-lg-6">
     <label for="username" class="form-label">Vagas disponíveis</label>
 
 
-        <input type="number" class="form-control" id="inputGroupPrepend2"
-        aria-describedby="inputGroupPrepend2" name="tempoVaga"    maxlength="9" />
+    <input type="number" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2"
+        name="tempoVaga" maxlength="9" />
 </div>
 
 <div class="col-lg-6">
     <label for="data_vaga" class="form-label">Disponível até</label>
 
-    <input type="date" class="form-control" id="inputGroupPrepend2"
-    aria-describedby="inputGroupPrepend2" name="dataVaga" />
+    <input type="date" class="form-control" id="inputGroupPrepend2" aria-describedby="inputGroupPrepend2"
+        name="dataVaga" />
 </div>
 <div class="col-lg-12 mb-2">
     <label class="text-label">Descrição do Vaga*</label>
@@ -65,12 +64,12 @@
     </div>
 </div>
 
-    <div id="wizard_Details" class="tab-pane" role="tabpanel">
-        <div class="col-xl-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Predefinir Perfil de canditados</h4>
-                </div>
-                @include('extra.hablidades.index')
+<div id="wizard_Details" class="tab-pane" role="tabpanel">
+    <div class="col-xl-12 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Predefinir Perfil de canditados</h4>
             </div>
+            @include('extra.hablidades.index')
         </div>
+    </div>

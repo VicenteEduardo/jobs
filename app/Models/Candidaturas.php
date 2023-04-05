@@ -13,6 +13,22 @@ class Candidaturas extends Model
     protected $guarded = ['id'];
     protected $dates = ['deleted_at'];
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     public function canditados(){
 
         return $this->belongsTo(User::class, 'fk_cliente');

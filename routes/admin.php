@@ -76,6 +76,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/inscritos/curriculo/{id}', ['as' => 'admin.inscritos.curriculo', 'uses' => 'Admin\InscritosController@curriculo']);
     Route::get('admin/inscritos/show/{id}', ['as' => 'admin.inscritos.show', 'uses' => 'Admin\InscritosController@show']);
 
+    Route::post('admin/inscritos/filtrar', ['as' => 'admin.inscritos.filtrar', 'uses' => 'Admin\InscritosController@filtar']);
+
     Route::get('admin/inscritos/negar/{id}', ['as' => 'admin.inscritos.negar', 'uses' => 'Admin\InscritosController@negar']);
     Route::get('admin/inscritos/aprovar/{id}', ['as' => 'admin.inscritos.aprovar', 'uses' => 'Admin\InscritosController@aprovar']);
     Route::get('admin/inscritos/pendente/{id}', ['as' => 'admin.inscritos.pendente', 'uses' => 'Admin\InscritosController@pendente']);

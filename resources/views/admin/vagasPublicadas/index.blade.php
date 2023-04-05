@@ -1,5 +1,5 @@
 @extends('layouts.merge.dashboard')
-@section('titulo', 'Minhas empresas cadastradas')
+@section('titulo', 'Vagas Publicadas')
 @section('content')
 
 
@@ -14,7 +14,7 @@
                         <div class="card recent-sales overflow-auto">
 
                             <div class="card-body">
-                                <h5 class="card-title">Minhas empresas cadastradas</h5>
+                                <h5 class="card-title">Vagas Publicadas</h5>
 
 
                                 <table class="table table-borderless datatable">

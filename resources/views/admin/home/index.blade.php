@@ -216,9 +216,8 @@
                                     <!-- End Line Chart -->
 
                                 </div>
-                                @endif
-                                @if (Auth::user()->level == "Administrador")
-
+                            @endif
+                            @if (Auth::user()->level == 'Administrador')
                                 <div class="card-body">
                                     <h5 class="card-title">Meus Relatórios Mensais</h5>
 
@@ -266,7 +265,7 @@
                                                         maiocanditados, juncanditados, julcanditados, agocanditados,
                                                         setcanditados, outcanditados, novcanditados, dezcanditados
                                                     ]
-                                                },  {
+                                                }, {
                                                     name: 'Vagas Publicadas',
                                                     data: [jan, fev, mar, abr, maio, jun, jul, ago, set, out, nov, dez]
                                                 }],
@@ -318,91 +317,90 @@
                                 </div>
                             @endif
 
-                            @if (Auth::user()->level == "cliente")
+                            @if (Auth::user()->level == 'cliente')
+                                <div class="card-body">
+                                    <h5 class="card-title">Meus Relatórios Mensais</h5>
 
-                            <div class="card-body">
-                                <h5 class="card-title">Meus Relatórios Mensais</h5>
+                                    <!-- Line Chart -->
+                                    <div id="reportsChart"></div>
 
-                                <!-- Line Chart -->
-                                <div id="reportsChart"></div>
-
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", () => {
-
-
-
-                                        var jancanditados = JSON.parse('<?php echo $jancanditados; ?>');
-                                        var fevcanditados = JSON.parse('<?php echo $fevcanditados; ?>');
-                                        var marcanditados = JSON.parse('<?php echo $marcanditados; ?>');
-                                        var abrcanditados = JSON.parse('<?php echo $abrcanditados; ?>');
-                                        var maiocanditados = JSON.parse('<?php echo $maiocanditados; ?>');
-                                        var juncanditados = JSON.parse('<?php echo $juncanditados; ?>');
-                                        var julcanditados = JSON.parse('<?php echo $julcanditados; ?>');
-                                        var agocanditados = JSON.parse('<?php echo $agocanditados; ?>');
-                                        var setcanditados = JSON.parse('<?php echo $setcanditados; ?>');
-                                        var outcanditados = JSON.parse('<?php echo $outcanditados; ?>');
-                                        var novcanditados = JSON.parse('<?php echo $novcanditados; ?>');
-                                        var dezcanditados = JSON.parse('<?php echo $dezcanditados; ?>');
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
 
 
 
+                                            var jancanditados = JSON.parse('<?php echo $jancanditados; ?>');
+                                            var fevcanditados = JSON.parse('<?php echo $fevcanditados; ?>');
+                                            var marcanditados = JSON.parse('<?php echo $marcanditados; ?>');
+                                            var abrcanditados = JSON.parse('<?php echo $abrcanditados; ?>');
+                                            var maiocanditados = JSON.parse('<?php echo $maiocanditados; ?>');
+                                            var juncanditados = JSON.parse('<?php echo $juncanditados; ?>');
+                                            var julcanditados = JSON.parse('<?php echo $julcanditados; ?>');
+                                            var agocanditados = JSON.parse('<?php echo $agocanditados; ?>');
+                                            var setcanditados = JSON.parse('<?php echo $setcanditados; ?>');
+                                            var outcanditados = JSON.parse('<?php echo $outcanditados; ?>');
+                                            var novcanditados = JSON.parse('<?php echo $novcanditados; ?>');
+                                            var dezcanditados = JSON.parse('<?php echo $dezcanditados; ?>');
 
-                                        new ApexCharts(document.querySelector("#reportsChart"), {
-                                            series: [{
-                                                name: 'Minhas Inscrições',
 
-                                                data: [jancanditados, fevcanditados, marcanditados, abrcanditados,
-                                                    maiocanditados, juncanditados, julcanditados, agocanditados,
-                                                    setcanditados, outcanditados, novcanditados, dezcanditados
-                                                ]
-                                            }, ],
-                                            chart: {
-                                                height: 350,
-                                                type: 'area',
-                                                toolbar: {
-                                                    show: false
+
+
+                                            new ApexCharts(document.querySelector("#reportsChart"), {
+                                                series: [{
+                                                    name: 'Minhas Inscrições',
+
+                                                    data: [jancanditados, fevcanditados, marcanditados, abrcanditados,
+                                                        maiocanditados, juncanditados, julcanditados, agocanditados,
+                                                        setcanditados, outcanditados, novcanditados, dezcanditados
+                                                    ]
+                                                }, ],
+                                                chart: {
+                                                    height: 350,
+                                                    type: 'area',
+                                                    toolbar: {
+                                                        show: false
+                                                    },
                                                 },
-                                            },
-                                            markers: {
-                                                size: 4
-                                            },
-                                            colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                            fill: {
-                                                type: "gradient",
-                                                gradient: {
-                                                    shadeIntensity: 1,
-                                                    opacityFrom: 0.3,
-                                                    opacityTo: 0.4,
-                                                    stops: [0, 90, 100]
+                                                markers: {
+                                                    size: 4
+                                                },
+                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                                                fill: {
+                                                    type: "gradient",
+                                                    gradient: {
+                                                        shadeIntensity: 1,
+                                                        opacityFrom: 0.3,
+                                                        opacityTo: 0.4,
+                                                        stops: [0, 90, 100]
+                                                    }
+                                                },
+                                                dataLabels: {
+                                                    enabled: false
+                                                },
+                                                stroke: {
+                                                    curve: 'smooth',
+                                                    width: 2
+                                                },
+                                                xaxis: {
+                                                    type: 'datetime',
+                                                    categories: ["2023-01-19T00:00:00.000Z", "2023-01-19T01:30:00.000Z",
+                                                        "2023-01-19T02:30:00.000Z", "2023-01-19T03:30:00.000Z",
+                                                        "2023-01-19T04:30:00.000Z", "2023-01-19T05:30:00.000Z",
+                                                        "2023-01-19T06:30:00.000Z"
+                                                    ]
+                                                },
+                                                tooltip: {
+                                                    x: {
+                                                        format: 'dd/MM/yy HH:mm'
+                                                    },
                                                 }
-                                            },
-                                            dataLabels: {
-                                                enabled: false
-                                            },
-                                            stroke: {
-                                                curve: 'smooth',
-                                                width: 2
-                                            },
-                                            xaxis: {
-                                                type: 'datetime',
-                                                categories: ["2023-01-19T00:00:00.000Z", "2023-01-19T01:30:00.000Z",
-                                                    "2023-01-19T02:30:00.000Z", "2023-01-19T03:30:00.000Z",
-                                                    "2023-01-19T04:30:00.000Z", "2023-01-19T05:30:00.000Z",
-                                                    "2023-01-19T06:30:00.000Z"
-                                                ]
-                                            },
-                                            tooltip: {
-                                                x: {
-                                                    format: 'dd/MM/yy HH:mm'
-                                                },
-                                            }
-                                        }).render();
-                                    });
-                                </script>
-                                <!-- End Line Chart -->
+                                            }).render();
+                                        });
+                                    </script>
+                                    <!-- End Line Chart -->
 
-                            </div>
-                        @endif
+                                </div>
+                            @endif
 
                         </div>
                     </div><!-- End Reports -->
@@ -411,9 +409,13 @@
             </div><!-- End Left side columns -->
 
             <!-- Right side columns -->
+            @if(Auth::user()->level == "Administrador-Master")
+
             <div class="col-lg-4">
 
                 <!-- Website Traffic -->
+               
+
                 <div class="card">
                     <div class="filter">
                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -423,6 +425,7 @@
                         </ul>
                     </div>
 
+
                     <div class="card-body pb-0">
                         <h5 class="card-title">Relatório Semanal </h5>
 
@@ -430,6 +433,12 @@
 
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {
+
+                                var empresaCount = JSON.parse('<?php echo $empresaCount; ?>');
+                                var Vagas = JSON.parse('<?php echo $Vagas; ?>');
+                                var candidatos = JSON.parse('<?php echo $candidatos; ?>');
+
+
                                 echarts.init(document.querySelector("#trafficChart")).setOption({
                                     tooltip: {
                                         trigger: 'item'
@@ -439,7 +448,7 @@
                                         left: 'center'
                                     },
                                     series: [{
-                                        name: 'Access From',
+                                        name: 'Total',
                                         type: 'pie',
                                         radius: ['40%', '70%'],
                                         avoidLabelOverlap: false,
@@ -458,15 +467,15 @@
                                             show: false
                                         },
                                         data: [{
-                                                value: 1233,
+                                                value: candidatos,
                                                 name: 'Candidatos'
                                             },
                                             {
-                                                value: 10,
+                                                value: empresaCount,
                                                 name: 'Empresas'
                                             },
                                             {
-                                                value: 112,
+                                                value: Vagas,
                                                 name: 'Vagas'
                                             },
                                         ]
@@ -476,10 +485,11 @@
                         </script>
 
                     </div>
+
                 </div><!-- End Website Traffic -->
 
             </div><!-- End Right side columns -->
-
+            @endif
         </div>
     </section>
 

@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-    $response['categorias'] = Categoria::get();
-     view()->share($response);
+        $response['categorias'] = Categoria::get();
+        view()->share($response);
     }
 }

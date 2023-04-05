@@ -41,7 +41,7 @@
                                                 <td>
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></button>
                                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                  
+
                                                       <li> <a class="dropdown-item"
                                                         href="{{ url("admin/minhas-inscricoes/delete/{$item->id}") }}">Cancelar
                                                         Incrição</a></li>

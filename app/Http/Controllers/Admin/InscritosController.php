@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Classes\Logger;
 use App\Http\Controllers\Controller;
 use App\Models\Candidaturas;
+use App\Models\CategoriaVagas;
 use App\Models\Perfil;
+use App\Models\User;
 use App\Models\Vaga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,12 +56,18 @@ class InscritosController extends Controller
      */
     public function show($id)
     {
-        $reponse['canditados'] = Candidaturas::with('canditados')->where('fk_vaga', $id)->where('fk_publicador', Auth::user()->id)->paginate(10);
+
+        $reponse['canditados'] = Candidaturas::with('canditados')->where('fk_vaga', $id)->where('fk_publicador', Auth::user()->id)->get();
         $reponse['tituloEmprego'] = Vaga::find($id);
+
 
         $reponse['total'] = Candidaturas::with('canditados')->where('fk_vaga', $id)->where('fk_publicador', Auth::user()->id)->count();
 
-        $reponse['numVagas'] = Vaga::find(Candidaturas::find($id)->fk_vaga)->tempoVaga;
+        $id_vagas = Candidaturas::where('fk_vaga', $id)->first()->fk_vaga;
+
+        $reponse['numVagas'] = Vaga::find($id_vagas);
+
+        $reponse['categoriaVagas'] = CategoriaVagas::where('fk_categoria', $id_vagas)->get();
         $this->Logger->log('info', 'Entrou  inscritos a vagas com o id' . $id);
         return view('admin.inscritos.show.index', $reponse);
     }
@@ -143,6 +151,32 @@ class InscritosController extends Controller
             return view('admin.curriculo.index', $reponse);
         }
     }
+
+
+    public function filtar(Request $request)
+    {
+
+
+
+
+        $categories = $request->categoria[0];
+        $id = $request->id_vaga;
+
+        $reponse['canditados'] = Candidaturas::with('canditados')->where('nomeCategoria', $categories)->where('fk_vaga', $id)->where('fk_publicador', Auth::user()->id)->get();
+        $reponse['tituloEmprego'] = Vaga::find($id);
+
+
+        $reponse['total'] = Candidaturas::with('canditados')->where('nomeCategoria', $categories)->where('fk_vaga', $id)->where('fk_publicador', Auth::user()->id)->count();
+
+        $id_vagas = Candidaturas::where('fk_vaga', $id)->first()->fk_vaga;
+
+        $reponse['numVagas'] = Vaga::find($id_vagas);
+
+        $reponse['categoriaVagas'] = CategoriaVagas::where('fk_categoria', $id_vagas)->get();
+        $this->Logger->log('info', 'Entrou  inscritos a vagas com o id' . $id);
+        return view('admin.inscritos.show.index', $reponse);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

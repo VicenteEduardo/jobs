@@ -23,7 +23,7 @@
                                             <th>#</th>
                                             <th>Nome da empresa </th>
                                             <th>Titulo do Emprego</th>
-                                            <th>Tempo</th>
+                                            <th>Tipo de Vaga</th>
 
                                             <th class="text-left">ACÇÕES</th>
                                         </tr>
@@ -37,21 +37,25 @@
                                                 <td>{{ $item->tituloEmprego }} </td>
                                                 <td>{{ $item->tempoEmprego }} </td>
 
-
                                                 <td>
-
-                                                    <a class="btn btn-primary"
-                                                        href="{{ url("admin/publicar-vagas/show/{$item->id}") }}"><i
-                                                            class="bi bi-pencil-square"> </i></a>
-
-                                                    <a class="btn btn-danger"
-                                                        href="{{ url("admin/publicar-vagas/delete/{$item->id}") }}"><i
-                                                            class="bi bi-trash"></i></a>
+                                                    <button type="button" class="btn btn-primary"
+                                                        data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></button>
+                                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
 
+                                                        <li> <a class="dropdown-item"
+                                                                href="{{ url("admin/publicar-vagas/show/{$item->id}") }}">Detalhes</a>
+                                                        </li>
+                                                        <li> <a class="dropdown-item"
+                                                                href="{{ url("admin/publicar-vagas/delete/{$item->id}") }}">Apagar</a>
+                                                        </li>
 
 
+
+                                                    </ul>
                                                 </td>
+
+
 
                                             </tr>
                                         @endforeach

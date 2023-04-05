@@ -21,8 +21,11 @@
 
                             <div class="card-body">
                                 <h5 class="card-title">Lista de Candidatos Inscritos Vaga</h5>
-                                Vagas Abertas :{{ $numVagas }}<br>
+                                Vagas Abertas :{{ $numVagas->tempoVaga }}<br>
                                 Total Candidatos :{{ $total }}<br>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                             Filtrar Dados
+                                  </button>
                                 <table class="table table-borderless datatable">
                                     <thead>
                                         <tr>
@@ -91,5 +94,44 @@
                 </div>
             </div><!-- End Left side columns -->
         </div>
+
+
+
+
+<form action="{{ route('admin.inscritos.filtrar') }}" method="POST">
+    @csrf
+
+
+
+<input type="text" name="id_vaga" value="{{ $numVagas->id }}" hidden>
+    <div class="modal fade" id="basicModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Escolha a categoria</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                @foreach ($categoriaVagas as $item )
+                <div class="form-check form-check-inline ">
+                    <label class="form-check-label">
+                        <input name="categoria[]" type="checkbox" class="form-check-input"
+                            value="{{ $item->nomeCategoria }}" >{{ $item->nomeCategoria }}
+                    </label>
+                </div>
+                @endforeach
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+              <button type="Submit" class="btn btn-primary">Filtrar</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- End Basic Modal-->
+
+
+
+    </form>
     </section>
 @endsection

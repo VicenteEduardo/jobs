@@ -27,7 +27,7 @@ class ProcurarEmpregoController extends Controller
             return redirect()->route('admin.home');
         } else {
             $response['vaga'] =  Vaga::find($id);
-            $response['categoriaVagas'] = CategoriaVagas::where('fk_categoria', $id)->get();
+         $response['categoriaVagas'] = CategoriaVagas::where('fk_categoria', $id)->get();
 
             $this->Logger->log('info', 'Entrou em datalhes da   procurar emprego com o id'.$id);
             return view('admin.buscaEmprego.detalhesVaga.index', $response);

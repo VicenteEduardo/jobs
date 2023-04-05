@@ -23,7 +23,13 @@ class PublicarVagaController extends Controller
     }
     public function index()
     {
-        $reponse['vagaPublocadas'] = Vaga::where('fk_user', Auth::user()->id)->get();
+        if(Auth::user()->level == "Administrador-Master"){
+            $reponse['vagaPublocadas'] = Vaga::get();
+        }
+        else{
+            $reponse['vagaPublocadas'] = Vaga::where('fk_user', Auth::user()->id)->get();
+        }
+
         $this->Logger->log('info', 'Entrou em Lista de Vagas Publicadas');
         return view('admin.publicaVaga.list.index', $reponse);
     }
