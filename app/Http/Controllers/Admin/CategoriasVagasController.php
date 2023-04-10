@@ -29,6 +29,27 @@ class CategoriasVagasController extends Controller
         return  view('admin.categoriaVagas.create.index');
     }
 
+    public function edit($id){
+        $response['categoria'] = Categoria::find($id);
+        $this->Logger->log('info', 'entrou em editar  categorias');
+        return  view('admin.categoriaVagas.edit.index',$response);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'categoria' => 'required',
+   ]);
+
+
+        Categoria::find($id)->update([
+            'categoria' => $request->categoria,
+
+        ]);
+        $this->Logger->log('info', 'editou uma categoria com o nome' . $request->categoria);
+        return redirect()->route('admin.categorias.index')->with('edit', '1');
+    }
 
     public function store(Request $request)
     {

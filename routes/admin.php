@@ -51,7 +51,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('admin/categorias/index', ['as' => 'admin.categorias.index', 'uses' => 'Admin\CategoriasVagasController@index']);
     Route::get('admin/categorias/create', ['as' => 'admin.categorias.create', 'uses' => 'Admin\CategoriasVagasController@create']);
-
     Route::post('admin/categorias/store', ['as' => 'admin.categorias.store', 'uses' => 'Admin\CategoriasVagasController@store']);
     Route::get('admin/categorias/edit/{id}', ['as' => 'admin.categorias.edit', 'uses' => 'Admin\CategoriasVagasController@edit']);
     Route::put('admin/categorias/update/{id}', ['as' => 'admin.categorias.update', 'uses' => 'Admin\CategoriasVagasController@update']);
@@ -76,7 +75,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/inscritos/curriculo/{id}', ['as' => 'admin.inscritos.curriculo', 'uses' => 'Admin\InscritosController@curriculo']);
     Route::get('admin/inscritos/show/{id}', ['as' => 'admin.inscritos.show', 'uses' => 'Admin\InscritosController@show']);
 
-    Route::post('admin/inscritos/filtrar', ['as' => 'admin.inscritos.filtrar', 'uses' => 'Admin\InscritosController@filtar']);
+    Route::post('admin/inscritos/filtrar/', ['as' => 'admin.inscritos.filtrar', 'uses' => 'Admin\InscritosController@filtar']);
+
+    Route::get('admin/inscritos/filtrar/{categoria}/{id}', ['as' => 'admin.inscritos.filtrar.resultados', 'uses' => 'Admin\InscritosController@filtroResultado']);
 
     Route::get('admin/inscritos/negar/{id}', ['as' => 'admin.inscritos.negar', 'uses' => 'Admin\InscritosController@negar']);
     Route::get('admin/inscritos/aprovar/{id}', ['as' => 'admin.inscritos.aprovar', 'uses' => 'Admin\InscritosController@aprovar']);
@@ -163,7 +164,6 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('admin/slideshow/edit/{id}', ['as' => 'admin.slideshow.edit', 'uses' => 'Admin\SlideShowController@edit']);
         Route::put('admin/slideshow/update/{id}', ['as' => 'admin.slideshow.update', 'uses' => 'Admin\SlideShowController@update']);
-
         Route::get('admin/slideshow/delete/{id}', ['as' => 'admin.slideshow.delete', 'uses' => 'Admin\SlideShowController@destroy']);
         /* end slideshow */
 
@@ -171,13 +171,10 @@ Route::middleware(['auth'])->group(function () {
         /* news */
         Route::get('admin/news/index', ['as' => 'admin.news.index', 'uses' => 'Admin\NewsController@list']);
         Route::get('admin/news/show/{id}', ['as' => 'admin.news.show', 'uses' => 'Admin\NewsController@show']);
-
         Route::get('admin/news/create', ['as' => 'admin.news.create', 'uses' => 'Admin\NewsController@create']);
         Route::post('admin/news/store', ['as' => 'admin.news.store', 'uses' => 'Admin\NewsController@store']);
-
         Route::get('admin/news/edit/{id}', ['as' => 'admin.news.edit', 'uses' => 'Admin\NewsController@edit']);
         Route::put('admin/news/update/{id}', ['as' => 'admin.news.update', 'uses' => 'Admin\NewsController@update']);
-
         Route::get('admin/news/delete/{id}', ['as' => 'admin.news.delete', 'uses' => 'Admin\NewsController@destroy']);
         /* end news */
 
@@ -187,7 +184,6 @@ Route::middleware(['auth'])->group(function () {
 
         /* senra */
         Route::get('admin/senra/show', ['as' => 'admin.senra.show', 'uses' => 'Admin\SenraController@show']);
-
         Route::get('admin/senra/edit/{id}', ['as' => 'admin.senra.edit', 'uses' => 'Admin\SenraController@edit']);
         Route::put('admin/senra/update/{id}', ['as' => 'admin.senra.update', 'uses' => 'Admin\SenraController@update']);
         /* end senra */

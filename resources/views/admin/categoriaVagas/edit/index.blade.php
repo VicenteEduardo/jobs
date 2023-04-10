@@ -9,10 +9,11 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="pt-4 pb-2">
-                                <h5 class="card-title text-center pb-0 fs-4 fw-bold">Nova Categoria</h5>
+                                <h5 class="card-title text-center pb-0 fs-4 fw-bold">Editar Categoria</h5>
                             </div>
-                            <form method="POST" action="{{ route('admin.categorias.store') }}"
-                                class="row g-3 needs-validation" novalidate>
+                            <form method="POST" action="{{ route('admin.categorias.update', $categoria->id) }}" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 @csrf
                                 @if ($errors->any())
                                     <div class="alert alert-danger">

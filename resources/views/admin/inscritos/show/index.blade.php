@@ -75,8 +75,8 @@
                                                         <li><a class="dropdown-item"
                                                                 href="{{ url("admin/inscritos/pendente/{$item->id}") }}">Pendente</a>
                                                         </li>
-                                                        <li><a class="dropdown-item"
-                                                                href="admin/inscritos/curriculo/{$item->fk_cliente}">Ver
+                                                        <li><a target="_blank" class="dropdown-item"
+                                                                href="{{ url("admin/inscritos/curriculo/{$item->fk_cliente}") }}">Ver
                                                                 curriculo</a></li>
                                                     </ul>
                                                 </td>

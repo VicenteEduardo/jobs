@@ -4,7 +4,7 @@
         <div class="form-check form-check-inline">
             <label class="form-check-label">
                 <input value="{{ $item->categoria }}" type="checkbox" name="categoria[]" class="form-check-input"
-                    checked>{{ $item->categoria }}
+                    >{{ $item->categoria }}
             </label>
         </div>
 

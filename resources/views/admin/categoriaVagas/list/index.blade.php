@@ -38,12 +38,24 @@
 
                       <td>{{ $item->categoria }} </td>
                       <td>{{ $item->created_at }}</td>
-                      <td>
 
-                      <a class="btn btn-danger "
-                      href="{{ url("admin/categorias/delete/{$item->id}") }}">
-                      <i class="bi bi-trash"></i></a>
-                      </td>
+                      <td>
+                        <button type="button" class="btn btn-primary"
+                            data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></button>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                            <li><a class="dropdown-item"
+                                    href="{{ url("admin/categorias/edit/{$item->id}") }}">Editar</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ url("admin/categorias/delete/{$item->id}") }}">
+                                    Eliminar</a></li>
+                        </ul>
+                    </td>
+
+
+
+                  
                     </tr>
                     @endforeach
                   </tbody>

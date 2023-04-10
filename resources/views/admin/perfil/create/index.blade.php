@@ -4,8 +4,7 @@
 
     <link href="/dashboard/public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet"
         type="text/css" />
-    <link href="/dashboard/public/vendor/jquery-smartwizard/dist/css/smart_wizard.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="/dashboard/public/vendor/jquery-smartwizard/dist/css/smart_wizard.min.css" rel="stylesheet" type="text/css" />
 
     <div class="content-body">
         <form method="POST" action="{{ route('admin.perfil.store') }}" enctype="multipart/form-data">
@@ -19,8 +18,7 @@
                                     <div class="card-header flex-wrap border-0 pb-0">
                                         <h3 class="fs-24 text-black font-w600 mr-auto mb-2 pr-3">Editar Perfil</h3>
 
-                                        <button type="submit" class="btn btn-primary btn-rounded mb-2"> Salvar
-                                            Alterações</button>
+
 
                                     </div>
                                     @if ($errors->any())
@@ -63,10 +61,12 @@
                                                 <div class="col-xl-4 col-sm-6">
                                                     <div class="form-group">
                                                         <label>Data de Nascimento</label>
-                                                        <input name="dataNascimento" type="date" class="form-control"
+                                                        <input name="dataNascimento" type="date" class="form-control" id="no-spin" onkeypress="return false"
                                                             placeholder=""
-                                                            value="{{ isset($perfilCliente->dataNascimento) ? $perfilCliente->dataNascimento : old('dataNascimento') }}">
-                                                    </div>
+                                                            value="{{ isset($perfilCliente->dataNascimento) ? $perfilCliente->dataNascimento : old('dataNascimento') }}" min="">
+
+
+                                                        </div>
                                                 </div>
                                                 <div class="col-xl-4 col-sm-6">
                                                     <div class="form-group">
@@ -94,8 +94,7 @@
                                                         <div class="input-group input-icon mb-3">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text" id="basic-addon1"><i
-                                                                        class="fa fa-phone"
-                                                                        aria-hidden="true"></i></span>
+                                                                        class="fa fa-phone" aria-hidden="true"></i></span>
                                                             </div>
                                                             <input name="telefone" type="text" class="form-control"
                                                                 placeholder="Telefone"
@@ -136,15 +135,14 @@
                                             </div>
                                         </div>
                                         <div class="mb-5">
-                                            <div class="title mb-4"><span
-                                                    class="fs-18 text-black font-w600">Habilitações literárias</span></div>
+                                            <div class="title mb-4"><span class="fs-18 text-black font-w600">Habilitações
+                                                    literárias</span></div>
                                             <div class="row">
                                                 <div class="col-xl-12">
                                                     <div class="form-group">
                                                         <label>Descreve a que</label>
-                                                        <textarea name="ablilitacoesLiteriais" class="form-control"
-                                                            rows="6">
-                                                             {{ isset($perfilCliente->ablilitacoesLiteriais)? $perfilCliente->ablilitacoesLiteriais: old('ablilitacoesLiteriais') }}
+                                                        <textarea name="ablilitacoesLiteriais" class="form-control" rows="6">
+                                                             {{ isset($perfilCliente->ablilitacoesLiteriais) ? $perfilCliente->ablilitacoesLiteriais : old('ablilitacoesLiteriais') }}
                                        </textarea>
                                                     </div>
                                                 </div>
@@ -154,16 +152,15 @@
 
 
                                             <div class="mb-5">
-                                                <div class="title mb-4"><span
-                                                        class="fs-18 text-black font-w600">Formação profissional</span>
+                                                <div class="title mb-4"><span class="fs-18 text-black font-w600">Formação
+                                                        profissional</span>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-xl-12">
                                                         <div class="form-group">
                                                             <label>Descreve a que</label>
-                                                            <textarea name="formacacaoProfissional" class="form-control"
-                                                                rows="6">
-                                                                        {{ isset($perfilCliente->formacacaoProfissional)? $perfilCliente->formacacaoProfissional: old('formacacaoProfissional') }}
+                                                            <textarea name="formacacaoProfissional" class="form-control" rows="6">
+                                                                        {{ isset($perfilCliente->formacacaoProfissional) ? $perfilCliente->formacacaoProfissional : old('formacacaoProfissional') }}
                                            </textarea>
                                                         </div>
                                                     </div>
@@ -179,9 +176,8 @@
                                                         <div class="col-xl-12">
                                                             <div class="form-group">
                                                                 <label>Descreve a que</label>
-                                                                <textarea name="explerienciaProfissional"
-                                                                    class="form-control" rows="6">
-                                                                            {{ isset($perfilCliente->explerienciaProfissional)? $perfilCliente->explerienciaProfissional: old('explerienciaProfissional') }}
+                                                                <textarea name="explerienciaProfissional" class="form-control" rows="6">
+                                                                            {{ isset($perfilCliente->explerienciaProfissional) ? $perfilCliente->explerienciaProfissional : old('explerienciaProfissional') }}
                                                </textarea>
                                                             </div>
                                                         </div>
@@ -198,8 +194,7 @@
                                                             <div class="col-xl-12">
                                                                 <div class="form-group">
                                                                     <label>Descreve a que</label>
-                                                                    <textarea name="idiomas" class="form-control"
-                                                                        rows="6">
+                                                                    <textarea name="idiomas" class="form-control" rows="6">
                                                                                 {{ isset($perfilCliente->idiomas) ? $perfilCliente->idiomas : old('idiomas') }}
                                                    </textarea>
                                                                 </div>
@@ -210,31 +205,25 @@
 
                                                         <div class="mb-5">
                                                             <div class="title mb-4"><span
-                                                                    class="fs-18 text-black font-w600">Predefinir Hablidades
+                                                                    class="fs-18 text-black font-w600">Predefinir
+                                                                    Hablidades
                                                                 </span></div>
                                                             <div class="row">
                                                                 <div class="col-xl-12">
                                                                     <div class="form-group">
                                                                         <label>Descreve a que</label>
-                                                                        @include(
-                                                                            'extra.hablidades.index'
-)
+                                                                        @include('extra.hablidades.index')
                                                                     </div>
                                                                 </div>
                                                             </div>
+
                                                         </div>
                                                         <div>
-
+                                                            <button type="submit"
+                                                                class="btn btn-primary btn-rounded mb-2 center"> Salvar
+                                                                Alterações</button>
                                                         </div>
         </form>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    </div>
-    </div>
 
-    </div>
-@endsection
+    @endsection

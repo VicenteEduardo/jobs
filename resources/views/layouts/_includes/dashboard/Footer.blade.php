@@ -120,6 +120,16 @@
         })
     </script>
 @endif
+@if(session('error_publicar'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro ao publicar vaga por favor verifique os dados digitados!',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
+@endif
 
 
 

@@ -55,69 +55,68 @@ class PublicarVagaController extends Controller
     public function store(Request $request)
     {
 
+try {
+    $request->validate([
+        'tituloEmprego' => 'required|string|max:255',
+        'emailEmprego' => 'required|string|max:200',
+        'tempoEmprego' => 'required|',
+        'nomeEmresa' => 'required|string|max:100',
+        'descricaoEmpreego' => 'required',
+        'telefoneEmprego' => 'required|max:12',
+        'tempoVaga' => 'required',
+        'dataVaga' => 'required',
+        'imagemEmprego' => 'mimes:jpg,png,gif,SVG,EPS',
+    ]);
 
-        $request->validate([
-            'tituloEmprego' => 'required|string|max:255',
-            'emailEmprego' => 'required|string|max:200',
-            'tempoEmprego' => 'required|',
-            'nomeEmresa' => 'required|string|max:100',
-            'descricaoEmpreego' => 'required',
-            'telefoneEmprego' => 'required|max:12',
-            'tempoVaga' => 'required',
-            'dataVaga' => 'required',
+    if ($middle = $request->file('imagemEmprego')) {
+        $file = $middle->storeAs('photoEmployee', 'photoEmployee-' . uniqid(rand(1, 5)) . "." . $middle->extension());
+    } else {
+        $file = null;
+    }
+    $Vaga = Vaga::create([
+        'fk_user' => Auth::user()->id,
+        'tituloEmprego' => $request->tituloEmprego,
+        'emailEmprego' => $request->emailEmprego,
+        'tempoEmprego' => $request->tempoEmprego,
+        'imagemEmprego' => $file,
+        'telefoneEmprego' => $request->telefoneEmprego,
+        'nomeEmresa' => $request->nomeEmresa,
+        'descricaoEmpreego' => $request->descricaoEmpreego,
+        'tempoVaga' => $request->tempoVaga,
+        'dataVaga' => $request->dataVaga
+    ]);
 
-
-            'imagemEmprego' => 'mimes:jpg,png,gif,SVG,EPS',
+    for ($a = 0; $a < count($request->categoria); $a++) {
+        CategoriaVagas::create([
+            'nomeCategoria' => $request->categoria[$a],
+            'fk_categoria' => $Vaga->id,
         ]);
+        $candidatos = CategoriaCliente::where('nomeCategoria', $request->categoria[$a])->get();
 
-
-
-
-        if ($middle = $request->file('imagemEmprego')) {
-            $file = $middle->storeAs('photoEmployee', 'photoEmployee-' . uniqid(rand(1, 5)) . "." . $middle->extension());
-        } else {
-            $file = null;
-        }
-        $Vaga = Vaga::create([
-            'fk_user' => Auth::user()->id,
-            'tituloEmprego' => $request->tituloEmprego,
-            'emailEmprego' => $request->emailEmprego,
-            'tempoEmprego' => $request->tempoEmprego,
-            'imagemEmprego' => $file,
-            'telefoneEmprego' => $request->telefoneEmprego,
-            'nomeEmresa' => $request->nomeEmresa,
-            'descricaoEmpreego' => $request->descricaoEmpreego,
-            'tempoVaga' => $request->tempoVaga,
-            'dataVaga' => $request->dataVaga
-        ]);
-
-        for ($a = 0; $a < count($request->categoria); $a++) {
-            CategoriaVagas::create([
-                'nomeCategoria' => $request->categoria[$a],
-                'fk_categoria' => $Vaga->id,
+        foreach ($candidatos as $item) {
+            Candidaturas::create([
+                'fk_cliente' => $item->fk_cliente,
+                'fk_vaga' => $Vaga->id,
+                'nomeCategoria' => $item->nomeCategoria,
+                'fk_publicador' => Auth::user()->id,
+                'status' => "Pendente",
             ]);
-            $candidatos = CategoriaCliente::where('nomeCategoria', $request->categoria[$a])->get();
 
-            foreach ($candidatos as $item) {
-                Candidaturas::create([
-                    'fk_cliente' => $item->fk_cliente,
-                    'fk_vaga' => $Vaga->id,
-                    'nomeCategoria' => $item->nomeCategoria,
-                    'fk_publicador' => Auth::user()->id,
-                    'status' => "Pendente",
-                ]);
-
-                SMS::create([
-                    'fk_cliente' => $item->fk_cliente,
-                    'tituloEmprego' =>  $request->tituloEmprego,
-                    'nomeCategoria' => $item->nomeCategoria,
-                    'nomeEmresa' => $request->nomeEmresa,
-                ]);
-            }
+            SMS::create([
+                'fk_cliente' => $item->fk_cliente,
+                'tituloEmprego' =>  $request->tituloEmprego,
+                'nomeCategoria' => $item->nomeCategoria,
+                'nomeEmresa' => $request->nomeEmresa,
+            ]);
         }
+    }
 
-        $this->Logger->log('info', 'Cadastrou uma vaga com o nome  ' . $request->tituloEmprego);
-        return redirect()->route('admin.publicarVagas.index')->with('create', '1');
+    $this->Logger->log('info', 'Cadastrou uma vaga com o nome  ' . $request->tituloEmprego);
+    return redirect()->route('admin.publicarVagas.index')->with('create', '1');
+} catch (\Throwable $th) {
+ return redirect()->back()->with('error_publicar','1');
+}
+
     }
 
 

@@ -20,9 +20,17 @@ class EmpresaController extends Controller
     }
     public function index()
     {
-       $response['empresaPerfil']= Empresa::where('fk_user',Auth::user()->id)->get();
-       $this->Logger->log('info', 'Entrou  em Minhas empresas cadastradas');
-       return view('admin.perfilEmpresa.list.index',$response);
+
+
+
+        if (Auth::user()->level == "Administrador-Master") {
+            $response['empresaPerfil'] = Empresa::get();
+        } else {
+            $response['empresaPerfil'] = Empresa::where('fk_user', Auth::user()->id)->get();
+        }
+
+        $this->Logger->log('info', 'Entrou  em Minhas empresas cadastradas');
+        return view('admin.perfilEmpresa.list.index', $response);
     }
 
     /**
@@ -33,7 +41,7 @@ class EmpresaController extends Controller
     public function create()
     {
         $this->Logger->log('info', 'Entrou  em  cadastrar Minhas empresas cadastradas');
-    return view('admin.perfilEmpresa.create.index');
+        return view('admin.perfilEmpresa.create.index');
     }
 
     /**
@@ -49,10 +57,9 @@ class EmpresaController extends Controller
             'nif' => 'required|string|max:14|unique:empresas',
             'telefone' => 'required|max:9',
             'email' => 'required|unique:empresas',
-            'localizacao' => 'required',
             'imagem' => 'required|mimes:jpg,png,gif,SVG,EPS',
 
-              ]);
+        ]);
         if ($middle = $request->file('imagem')) {
             $file = $middle->storeAs('imagem', 'imagem-' . uniqid(rand(1, 5)) . "." . $middle->extension());
         } else {
@@ -64,14 +71,12 @@ class EmpresaController extends Controller
             'nomeEmpresa' => $request->nomeEmpresa,
             'telefone' => $request->telefone,
             'email' => $request->email,
-            'localizacao' => $request->localizacao,
-            'residencia' => $request->residencia,
             'telefone' => $request->telefone,
-            'imagem'=> $file ,
-        'nif'=> $request->nif,
-        'status'=>"Pendente"
+            'imagem' => $file,
+            'nif' => $request->nif,
+            'status' => "Pendente"
         ]);
-        $this->Logger->log('info', 'Cadastrou uma empresa com o nome'.$request->nomeEmpresa);
+        $this->Logger->log('info', 'Cadastrou uma empresa com o nome' . $request->nomeEmpresa);
         return redirect()->route('admin.perfilEmpresa.index')->with('create', '1');
     }
 
@@ -94,7 +99,10 @@ class EmpresaController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $response['empresaPerfil'] = Empresa::find($id);
+        $this->Logger->log('info', 'entrou em  editar uma empresa com o nome' . $response['empresaPerfil']->nomeEmpresa);
+        return view('admin.perfilEmpresa.edit.index', $response);
     }
 
     /**
@@ -106,7 +114,32 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nomeEmpresa' => 'required',
+            'nif' => 'required',
+            'telefone' => 'required|max:9',
+            'email' => 'required',
+            'imagem' => 'mimes:jpg,png,gif,SVG,EPS',
+
+        ]);
+        if ($middle = $request->file('imagem')) {
+            $file = $middle->storeAs('imagem', 'imagem-' . uniqid(rand(1, 5)) . "." . $middle->extension());
+        } else {
+
+            $file =  Empresa::find($id)->imagem;
+        }
+
+        Empresa::find($id)->update([
+            'nomeEmpresa' => $request->nomeEmpresa,
+            'telefone' => $request->telefone,
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+            'imagem' => $file,
+            'nif' => $request->nif,
+
+        ]);
+        $this->Logger->log('info', 'editou uma empresa com o nome' . $request->nomeEmpresa);
+        return redirect()->route('admin.perfilEmpresa.index')->with('edit', '1');
     }
 
     /**
@@ -118,7 +151,7 @@ class EmpresaController extends Controller
     public function destroy($id)
     {
         Empresa::find($id)->delete();
-        $this->Logger->log('info', 'Apagou uma empresa com o '.$id);
+        $this->Logger->log('info', 'Apagou uma empresa com o ' . $id);
         return  redirect()->route('admin.perfilEmpresa.index')->with('destroy', '1');
     }
 }

@@ -22,6 +22,7 @@ class CreateEmpresasTable extends Migration
             $table->string('telefone');
             $table->string('nif');
             $table->string('email');
+
             $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();

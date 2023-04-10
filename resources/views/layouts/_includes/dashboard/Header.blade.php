@@ -71,81 +71,64 @@
                     </a>
                 </li><!-- End Search Icon-->
 
-                <li class="nav-item dropdown">
+                @if (Auth::user()->level == 'cliente' && isset($smsTotal))
+                    <li class="nav-item dropdown">
 
-                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-bell"></i>
-                        <span class="badge bg-primary badge-number">4</span>
-                    </a><!-- End Notification Icon -->
+                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="badge bg-primary badge-number">{{ $smsTotal }}</span>
+                        </a><!-- End Notification Icon -->
 
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                        <li class="dropdown-header">
-                            Você tem 4 notificações novas
-                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                            <li class="dropdown-header">
+                                Você tem {{ $smsTotal }} notificações novas
+                                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver
+                                        todas</span></a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
 
-                        <li class="notification-item">
-                            <i class="bi bi-exclamation-circle text-warning"></i>
-                            <div>
-                                <h4>Lorem Ipsum</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>30 min. ago</p>
-                            </div>
-                        </li>
 
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
 
-                        <li class="notification-item">
-                            <i class="bi bi-x-circle text-danger"></i>
-                            <div>
-                                <h4>Atque rerum nesciunt</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>1 hr. ago</p>
-                            </div>
-                        </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
 
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
 
-                        <li class="notification-item">
-                            <i class="bi bi-check-circle text-success"></i>
-                            <div>
-                                <h4>Sit rerum fuga</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>2 hrs. ago</p>
-                            </div>
-                        </li>
 
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            @foreach ($sms as $item)
+                                <li class="notification-item">
+                                    <i class="bi bi-check-circle text-success"></i>
+                                    <div>
+                                        <h4>Incrição a vaga</h4>
+                                        <p>foste inscrito para vaga {{ $item->tituloEmprego }} na empresa {{ $item->nomeEmresa }} na categoria de {{ $item->nomeCategoria }}  </p>
+                                        <p>{{ $item->created_at }}</p>
+                                    </div>
+                                </li>
+                            @endforeach
 
-                        <li class="notification-item">
-                            <i class="bi bi-info-circle text-primary"></i>
-                            <div>
-                                <h4>Dicta reprehenderit</h4>
-                                <p>Quae dolorem earum veritatis oditseno</p>
-                                <p>4 hrs. ago</p>
-                            </div>
-                        </li>
 
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li class="dropdown-footer">
-                            <a href="#">Ver Todas as Notificações</a>
-                        </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
 
-                    </ul><!-- End Notification Dropdown Items -->
 
-                </li><!-- End Notification Nav -->
 
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="dropdown-footer">
+                                <a href="#">Ver Todas as Notificações</a>
+                            </li>
+
+                        </ul><!-- End Notification Dropdown Items -->
+
+                    </li><!-- End Notification Nav -->
+                @endif
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
@@ -176,16 +159,26 @@
 
                         <li>
                             <a class="dropdown-item d-flex align-items-center"
-                                href="{{ route('admin.user.show', Auth::User()->id) }}">
+                                href="{{ route('admin.user.edit', Auth::User()->id) }}">
                                 <i class="bi bi-person"></i>
                                 <span>Perfil</span>
                             </a>
                         </li>
+
+                        @if (Auth()->user()->level == 'cliente')
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" target="_blank"
+                                    href="{{ route('admin.inscritos.curriculo', Auth::User()->id) }}">
+                                    <i class="bi bi-person"></i>
+                                    <span>Meu curriculo</span>
+                                </a>
+                            </li>
+                        @endif
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
-                 
+
                         <li>
                             <hr class="dropdown-divider">
                         </li>

@@ -35,7 +35,7 @@
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('admin.perfil.create') }}">
                     <i class="bi bi-grid"></i>
-                    <span>Perfil</span>
+                    <span>Curriculo</span>
                 </a>
             </li><!-- Dashboard -->
 
@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.user.index') }}">
+                            <a href="{{ route('admin.categorias.index') }}">
                                 <i class="bi bi-circle"></i><span>Listar</span>
                             </a>
                         </li>
@@ -123,28 +123,32 @@
                 </li><!-- Empresas -->
             @endif
 
+            @if (Auth::user()->level == 'Administrador')
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#perfilEmpresa" data-bs-toggle="collapse"
+                        href="#">
+                        <i class="bi bi-building"></i><span>Empresas</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="perfilEmpresa" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li><a href="{{ route('admin.perfilEmpresa.create') }}">Cadastrar Empresas</a></li>
+                        <li><a href="{{ route('admin.perfilEmpresa.index') }}">Listar Empresas</a></li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#perfilEmpresa" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-building"></i><span>Empresas</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="perfilEmpresa" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li><a href="{{ route('admin.perfilEmpresa.create') }}">Cadastrar Empresas</a></li>
-                    <li><a href="{{ route('admin.perfilEmpresa.index') }}">Listar Empresas</a></li>
+                    </ul>
+                </li><!-- Empresas -->
 
-                </ul>
-            </li><!-- Empresas -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#publicarVagas" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-building"></i><span>Publicar Vagas</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="publicarVagas" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li><a href="{{ route('admin.publicarVagas.create') }}">Cadastrar Vagas</a></li>
+                        <li><a href="{{ route('admin.publicarVagas.index') }}">Listar Vagas</a></li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#publicarVagas" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-building"></i><span>Publicar Vagas</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="publicarVagas" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li><a href="{{ route('admin.publicarVagas.create') }}">Cadastrar Vagas</a></li>
-                    <li><a href="{{ route('admin.publicarVagas.index') }}">Listar Vagas</a></li>
+                    </ul>
+                </li><!-- Empresas -->
+            @endif
 
-                </ul>
-            </li><!-- Empresas -->
+
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#inscritos" data-bs-toggle="collapse" href="#">

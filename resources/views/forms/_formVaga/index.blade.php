@@ -68,8 +68,16 @@
     <div class="col-xl-12 col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Predefinir Perfil de canditados</h4>
+                <h4 class="card-title">Predefinir Categorias</h4>
             </div>
             @include('extra.hablidades.index')
         </div>
     </div>
+
+
+
+
+    <script>
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("dataVaga")[0].setAttribute('min', today);
+    </script>
