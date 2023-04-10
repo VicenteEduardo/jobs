@@ -106,8 +106,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Relatório Mensal</h5>
 
+                                    <div id="columnChart"></div>
+
+
                                     <!-- Line Chart -->
-                                    <div id="reportsChart"></div>
 
                                     <script>
                                         document.addEventListener("DOMContentLoaded", () => {
@@ -152,67 +154,61 @@
                                             var outEmpresa = JSON.parse('<?php echo $outEmpresa; ?>');
                                             var novEmpresa = JSON.parse('<?php echo $novEmpresa; ?>');
                                             var dezEmpresa = JSON.parse('<?php echo $dezEmpresa; ?>');
-
-                                            new ApexCharts(document.querySelector("#reportsChart"), {
-                                                series: [{
-                                                    name: 'Pessoas Inscritas',
-
-                                                    data: [jancanditados, fevcanditados, marcanditados, abrcanditados,
-                                                        maiocanditados, juncanditados, julcanditados, agocanditados,
-                                                        setcanditados, outcanditados, novcanditados, dezcanditados
-                                                    ]
-                                                }, {
-                                                    name: 'Empresas Cadastradas',
-                                                    data: [janEmpresa, fevEmpresa, marEmpresa, abrEmpresa, maioEmpresa, junEmpresa,
-                                                        julEmpresa, agoEmpresa, setEmpresa, outEmpresa, novEmpresa, dezEmpresa
-                                                    ]
-                                                }, {
-                                                    name: 'Vagas Publicadas',
-                                                    data: [jan, fev, mar, abr, maio, jun, jul, ago, set, out, nov, dez]
-                                                }],
-                                                chart: {
-                                                    height: 350,
-                                                    type: 'area',
-                                                    toolbar: {
-                                                        show: false
-                                                    },
-                                                },
-                                                markers: {
-                                                    size: 4
-                                                },
-                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                                fill: {
-                                                    type: "gradient",
-                                                    gradient: {
-                                                        shadeIntensity: 1,
-                                                        opacityFrom: 0.3,
-                                                        opacityTo: 0.4,
-                                                        stops: [0, 90, 100]
-                                                    }
-                                                },
-                                                dataLabels: {
-                                                    enabled: false
-                                                },
-                                                stroke: {
-                                                    curve: 'smooth',
-                                                    width: 2
-                                                },
-                                                xaxis: {
-                                                    type: 'datetime',
-                                                    categories: ["2023-01-19T00:00:00.000Z", "2023-01-19T01:30:00.000Z",
-                                                        "2023-01-19T02:30:00.000Z", "2023-01-19T03:30:00.000Z",
-                                                        "2023-01-19T04:30:00.000Z", "2023-01-19T05:30:00.000Z",
-                                                        "2023-01-19T06:30:00.000Z"
-                                                    ]
-                                                },
-                                                tooltip: {
-                                                    x: {
-                                                        format: 'dd/MM/yy HH:mm'
-                                                    },
+                                          new ApexCharts(document.querySelector("#columnChart"), {
+                                            series: [{
+                                              name: 'Inscritos às Vagas',
+                                              data: [jancanditados, fevcanditados, marcanditados, abrcanditados,
+                                              maiocanditados, juncanditados, julcanditados, agocanditados,
+                                              setcanditados, outcanditados, novcanditados, dezcanditados]
+                                            }, {
+                                              name: 'Empresas Cadastradas',
+                                              data: [janEmpresa, fevEmpresa, marEmpresa, abrEmpresa, maioEmpresa, junEmpresa,
+                                              julEmpresa, agoEmpresa, setEmpresa, outEmpresa, novEmpresa, dezEmpresa]
+                                            }, {
+                                              name: 'Vagas Publicadas',
+                                              data: [jan, fev, mar, abr, maio, jun, jul, ago, set, out, nov, dez]
+                                            }],
+                                            chart: {
+                                              type: 'bar',
+                                              height: 350
+                                            },
+                                            plotOptions: {
+                                              bar: {
+                                                horizontal: false,
+                                                columnWidth: '60%',
+                                                endingShape: 'rounded'
+                                              },
+                                            },
+                                            dataLabels: {
+                                              enabled: false
+                                            },
+                                            stroke: {
+                                              show: true,
+                                              width: 2,
+                                              colors: ['transparent']
+                                            },
+                                            xaxis: {
+                                              categories: ['JAN','FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ',],
+                                            },
+                                            yaxis: {
+                                              title: {
+                                                text: '(ESTATÍSTICA MENSAL)'
+                                              }
+                                            },
+                                            fill: {
+                                              opacity: 1,
+                                            },
+                                            tooltip: {
+                                              y: {
+                                                formatter: function(val) {
+                                                  return val + " neste mês"
                                                 }
-                                            }).render();
+                                              }
+                                            }
+                                          }).render();
                                         });
-                                    </script>
+                                      </script>
+
                                     <!-- End Line Chart -->
 
                                 </div>
@@ -222,7 +218,8 @@
                                     <h5 class="card-title">Meus Relatórios Mensais</h5>
 
                                     <!-- Line Chart -->
-                                    <div id="reportsChart"></div>
+                                    <div id="columnChart"></div>
+
 
                                     <script>
                                         document.addEventListener("DOMContentLoaded", () => {
@@ -257,7 +254,7 @@
 
 
 
-                                            new ApexCharts(document.querySelector("#reportsChart"), {
+                                            new ApexCharts(document.querySelector("#columnChart"), {
                                                 series: [{
                                                     name: 'Pessoas Inscritas',
 
@@ -271,7 +268,7 @@
                                                 }],
                                                 chart: {
                                                     height: 350,
-                                                    type: 'area',
+                                                    type: 'bar',
                                                     toolbar: {
                                                         show: false
                                                     },
@@ -356,7 +353,7 @@
                                                 }, ],
                                                 chart: {
                                                     height: 350,
-                                                    type: 'area',
+                                                    type: 'bar',
                                                     toolbar: {
                                                         show: false
                                                     },
@@ -414,7 +411,7 @@
             <div class="col-lg-4">
 
                 <!-- Website Traffic -->
-               
+
 
                 <div class="card">
                     <div class="filter">
@@ -492,6 +489,9 @@
             @endif
         </div>
     </section>
+
+
+
 
 
 @endsection
