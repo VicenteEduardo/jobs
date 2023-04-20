@@ -32,10 +32,11 @@
                                     <div class="card-body">
 
 
+                                        @include('forms._formPerfilEmpresa.index')
 
 
-
-                                        <button type="submit" class="btn btn-primary btn-rounded mb-2 btn-center tex-center"> Salvar
+                                        <button type="submit"
+                                            class="btn btn-primary btn-rounded mb-2 btn-center tex-center"> Salvar
                                         </button>
 
 

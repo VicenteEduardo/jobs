@@ -267,47 +267,44 @@
                                                     data: [jan, fev, mar, abr, maio, jun, jul, ago, set, out, nov, dez]
                                                 }],
                                                 chart: {
-                                                    height: 350,
                                                     type: 'bar',
-                                                    toolbar: {
-                                                        show: false
+                                                    height: 350
+                                                  },
+                                                  plotOptions: {
+                                                    bar: {
+                                                      horizontal: false,
+                                                      columnWidth: '60%',
+                                                      endingShape: 'rounded'
                                                     },
-                                                },
-                                                markers: {
-                                                    size: 4
-                                                },
-                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                                fill: {
-                                                    type: "gradient",
-                                                    gradient: {
-                                                        shadeIntensity: 1,
-                                                        opacityFrom: 0.3,
-                                                        opacityTo: 0.4,
-                                                        stops: [0, 90, 100]
-                                                    }
-                                                },
-                                                dataLabels: {
+                                                  },
+                                                  dataLabels: {
                                                     enabled: false
-                                                },
-                                                stroke: {
-                                                    curve: 'smooth',
-                                                    width: 2
-                                                },
-                                                xaxis: {
-                                                    type: 'datetime',
-                                                    categories: ["2023-01-19T00:00:00.000Z", "2023-01-19T01:30:00.000Z",
-                                                        "2023-01-19T02:30:00.000Z", "2023-01-19T03:30:00.000Z",
-                                                        "2023-01-19T04:30:00.000Z", "2023-01-19T05:30:00.000Z",
-                                                        "2023-01-19T06:30:00.000Z"
-                                                    ]
-                                                },
-                                                tooltip: {
-                                                    x: {
-                                                        format: 'dd/MM/yy HH:mm'
-                                                    },
-                                                }
-                                            }).render();
-                                        });
+                                                  },
+                                                  stroke: {
+                                                    show: true,
+                                                    width: 2,
+                                                    colors: ['transparent']
+                                                  },
+                                                  xaxis: {
+                                                    categories: ['JAN','FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ',],
+                                                  },
+                                                  yaxis: {
+                                                    title: {
+                                                      text: '(ESTATÍSTICA MENSAL)'
+                                                    }
+                                                  },
+                                                  fill: {
+                                                    opacity: 1,
+                                                  },
+                                                  tooltip: {
+                                                    y: {
+                                                      formatter: function(val) {
+                                                        return val + " neste mês"
+                                                      }
+                                                    }
+                                                  }
+                                                }).render();
+                                              });
                                     </script>
                                     <!-- End Line Chart -->
 
@@ -352,47 +349,45 @@
                                                     ]
                                                 }, ],
                                                 chart: {
-                                                    height: 350,
                                                     type: 'bar',
-                                                    toolbar: {
-                                                        show: false
+                                                    height: 350
+                                                  },
+                                                  plotOptions: {
+                                                    bar: {
+                                                      horizontal: false,
+                                                      columnWidth: '60%',
+                                                      endingShape: 'rounded'
                                                     },
-                                                },
-                                                markers: {
-                                                    size: 4
-                                                },
-                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                                fill: {
-                                                    type: "gradient",
-                                                    gradient: {
-                                                        shadeIntensity: 1,
-                                                        opacityFrom: 0.3,
-                                                        opacityTo: 0.4,
-                                                        stops: [0, 90, 100]
-                                                    }
-                                                },
-                                                dataLabels: {
+                                                  },
+                                                  dataLabels: {
                                                     enabled: false
-                                                },
-                                                stroke: {
-                                                    curve: 'smooth',
-                                                    width: 2
-                                                },
-                                                xaxis: {
-                                                    type: 'datetime',
-                                                    categories: ["2023-01-19T00:00:00.000Z", "2023-01-19T01:30:00.000Z",
-                                                        "2023-01-19T02:30:00.000Z", "2023-01-19T03:30:00.000Z",
-                                                        "2023-01-19T04:30:00.000Z", "2023-01-19T05:30:00.000Z",
-                                                        "2023-01-19T06:30:00.000Z"
-                                                    ]
-                                                },
-                                                tooltip: {
-                                                    x: {
-                                                        format: 'dd/MM/yy HH:mm'
-                                                    },
-                                                }
-                                            }).render();
-                                        });
+                                                  },
+                                                  stroke: {
+                                                    show: true,
+                                                    width: 2,
+                                                    colors: ['transparent']
+                                                  },
+                                                  xaxis: {
+                                                    categories: ['JAN','FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ',],
+                                                  },
+                                                  yaxis: {
+                                                    title: {
+                                                      text: '(ESTATÍSTICA MENSAL)'
+                                                    }
+                                                  },
+                                                  fill: {
+                                                    opacity: 1,
+                                                  },
+                                                  tooltip: {
+                                                    y: {
+                                                      formatter: function(val) {
+                                                        return val + " neste mês"
+                                                      }
+                                                    }
+                                                  }
+                                                }).render();
+                                              });
+
                                     </script>
                                     <!-- End Line Chart -->
 

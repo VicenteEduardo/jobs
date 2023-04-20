@@ -44,62 +44,74 @@ class PerfilController extends Controller
 
         ]);
 
-        if ($middle = $request->file('fotoPerfil')) {
-            $file = $middle->storeAs('fotoPerfil', 'fotoPerfil-' . uniqid(rand(1, 5)) . "." . $middle->extension());
-        } else {
-            $file =  Perfil::where('fk_user', Auth::user()->id)->fotoPerfil;;
-        }
+ $year= date('Y') ;
 
-        $perfil =  Perfil::where('fk_user', Auth::user()->id)->count();
-        if ($perfil <= 0) {
-            $Perfil = Perfil::create([
-                'fk_user' => Auth::user()->id,
-                'nomeCliente' => $request->nomeCliente,
-                'bi' => $request->bi,
-                'dataNascimento' => $request->dataNascimento,
-                'nacionalidade' => $request->nacionalidade,
-                'residencia' => $request->residencia,
-                'telefone' => $request->telefone,
-                'whatssap' => $request->whatssap,
-                'email' => $request->email,
-                'ablilitacoesLiteriais' => $request->ablilitacoesLiteriais,
-                'formacacaoProfissional' => $request->formacacaoProfissional,
-                'explerienciaProfissional' => $request->explerienciaProfissional,
-                'idiomas' => $request->idiomas,
-                'fotoPerfil' => $file
-            ]);
-            for ($a = 0; $a < count($request->categoria); $a++) {
-                CategoriaCliente::create([
-                    'nomeCategoria' => $request->categoria[$a],
-                    'fk_cliente' => Auth::user()->id,
-                ]);
-            }
-        } else {
-            $Perfil = Perfil::where('fk_user', Auth::user()->id)->update([
-                'fk_user' => Auth::user()->id,
-                'nomeCliente' => $request->nomeCliente,
-                'bi' => $request->bi,
-                'dataNascimento' => $request->dataNascimento,
-                'nacionalidade' => $request->nacionalidade,
-                'residencia' => $request->residencia,
-                'telefone' => $request->telefone,
-                'whatssap' => $request->whatssap,
-                'email' => $request->email,
-                'ablilitacoesLiteriais' => $request->ablilitacoesLiteriais,
-                'formacacaoProfissional' => $request->formacacaoProfissional,
-                'explerienciaProfissional' => $request->explerienciaProfissional,
-                'idiomas' => $request->idiomas,
-                'fotoPerfil' => $file
-            ]);
 
-            for ($a = 0; $a < count($request->categoria); $a++) {
-                CategoriaCliente::where('fk_cliente', Auth::user()->id)->update([
-                    'nomeCategoria' => $request->categoria[$a],
-                    'fk_cliente' => Auth::user()->id
-                ]);
-            }
+if( $year-date('Y', strtotime($request->dataNascimento))   >=18){
+
+
+    if ($middle = $request->file('fotoPerfil')) {
+        $file = $middle->storeAs('fotoPerfil', 'fotoPerfil-' . uniqid(rand(1, 5)) . "." . $middle->extension());
+    } else {
+        $file =  Perfil::where('fk_user', Auth::user()->id)->fotoPerfil;;
+    }
+
+    $perfil =  Perfil::where('fk_user', Auth::user()->id)->count();
+    if ($perfil <= 0) {
+        $Perfil = Perfil::create([
+            'fk_user' => Auth::user()->id,
+            'nomeCliente' => $request->nomeCliente,
+            'bi' => $request->bi,
+            'dataNascimento' => $request->dataNascimento,
+            'nacionalidade' => $request->nacionalidade,
+            'residencia' => $request->residencia,
+            'telefone' => $request->telefone,
+            'whatssap' => $request->whatssap,
+            'email' => $request->email,
+            'ablilitacoesLiteriais' => $request->ablilitacoesLiteriais,
+            'formacacaoProfissional' => $request->formacacaoProfissional,
+            'explerienciaProfissional' => $request->explerienciaProfissional,
+            'idiomas' => $request->idiomas,
+            'fotoPerfil' => $file
+        ]);
+        for ($a = 0; $a < count($request->categoria); $a++) {
+            CategoriaCliente::create([
+                'nomeCategoria' => $request->categoria[$a],
+                'fk_cliente' => Auth::user()->id,
+            ]);
         }
-        $this->Logger->log('info', 'Editou  Perfil');
-        return redirect()->route('admin.perfil.create')->with('edit', '1');
+    } else {
+        $Perfil = Perfil::where('fk_user', Auth::user()->id)->update([
+            'fk_user' => Auth::user()->id,
+            'nomeCliente' => $request->nomeCliente,
+            'bi' => $request->bi,
+            'dataNascimento' => $request->dataNascimento,
+            'nacionalidade' => $request->nacionalidade,
+            'residencia' => $request->residencia,
+            'telefone' => $request->telefone,
+            'whatssap' => $request->whatssap,
+            'email' => $request->email,
+            'ablilitacoesLiteriais' => $request->ablilitacoesLiteriais,
+            'formacacaoProfissional' => $request->formacacaoProfissional,
+            'explerienciaProfissional' => $request->explerienciaProfissional,
+            'idiomas' => $request->idiomas,
+            'fotoPerfil' => $file
+        ]);
+
+        for ($a = 0; $a < count($request->categoria); $a++) {
+            CategoriaCliente::where('fk_cliente', Auth::user()->id)->update([
+                'nomeCategoria' => $request->categoria[$a],
+                'fk_cliente' => Auth::user()->id
+            ]);
+        }
+    }
+    $this->Logger->log('info', 'Editou  Perfil');
+    return redirect()->route('admin.perfil.create')->with('edit', '1');
+}
+else{
+return redirect()->back()->with('year',1);
+}
+
+
     }
 }

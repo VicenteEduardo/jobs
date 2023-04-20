@@ -27,6 +27,7 @@ class HomeController extends Controller
         $Response['empresaCadastrada'] =    Empresa::where('status', '=', 'Aprovado')->count();
         $Response['UsuarioCadastrada'] = User::where('level', '=', 'cliente')->count();
         $Response['vagas'] = Vaga::sum('tempoVaga');
+   $Response['vagasRecentes']=Vaga::orderBy('id','Desc')->paginate(3);
         return view('site.home.index', $Response);
     }
 }

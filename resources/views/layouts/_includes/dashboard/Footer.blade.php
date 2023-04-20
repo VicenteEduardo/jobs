@@ -69,7 +69,7 @@
     </script>
 @endif
 
-@if(session('aprovado'))
+@if (session('aprovado'))
     <script>
         Swal.fire({
             icon: 'error',
@@ -79,7 +79,7 @@
         })
     </script>
 @endif
-@if(session('Pendente'))
+@if (session('Pendente'))
     <script>
         Swal.fire({
             icon: 'error',
@@ -90,7 +90,7 @@
     </script>
 @endif
 
-@if(session('Pendente'))
+@if (session('Pendente'))
     <script>
         Swal.fire({
             icon: 'error',
@@ -100,7 +100,7 @@
         })
     </script>
 @endif
-@if(session('Negado'))
+@if (session('Negado'))
     <script>
         Swal.fire({
             icon: 'error',
@@ -110,7 +110,7 @@
         })
     </script>
 @endif
-@if(session('error_vagas'))
+@if (session('error_vagas'))
     <script>
         Swal.fire({
             icon: 'error',
@@ -120,11 +120,21 @@
         })
     </script>
 @endif
-@if(session('error_publicar'))
+@if (session('error_publicar'))
     <script>
         Swal.fire({
             icon: 'error',
             title: 'Erro ao publicar vaga por favor verifique os dados digitados!',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
+@endif
+@if (session('year'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Sua idade deve ser superior a 18 anos !',
             showConfirmButton: false,
             timer: 2500
         })
@@ -167,15 +177,16 @@
 </script>
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
-  <div class="copyright">
-    &copy; Copyright <strong><span>Sistema de Gestão de Candidaturas</span></strong>. Todos os direitos reservados
-  </div>
-  <div class="credits">
-    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-  </div>
+    <div class="copyright">
+        &copy; Copyright <strong><span>Sistema de Gestão de Candidaturas</span></strong>. Todos os direitos reservados
+    </div>
+    <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
 </footer><!-- End Footer -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script src="{{ asset('dashboard/vendor/apexcharts/apexcharts.min.js') }}"></script>
@@ -183,7 +194,7 @@
 <script src="{{ asset('dashboard/vendor/chart.js/chart.min.js') }} "></script>
 <script src="{{ asset('dashboard/vendor/echarts/echarts.min.js') }} "></script>
 <script src="{{ asset('dashboard/vendor/quill/quill.min.js') }}  "></script>
-<script src= "{{ asset('dashboard/vendor/simple-datatables/simple-datatables.js') }} "></script>
+<script src="{{ asset('dashboard/vendor/simple-datatables/simple-datatables.js') }} "></script>
 <script src="{{ asset('dashboard/vendor/tinymce/tinymce.min.js') }}  "></script>
 
 <!-- Template Main JS File -->

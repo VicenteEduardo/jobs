@@ -38,18 +38,24 @@
 
                         @foreach ($vagas as $item)
                             @if (
-                                (date('y', strtotime($item->dataVaga)) >= date('y') && date('m', strtotime($item->dataVaga)) >= date('m')) ||
-                                    date('d', strtotime($item->dataVaga)) >= date('d'))
+                                (date('Y', strtotime($item->dataVaga)) >= date('Y') && date('m', strtotime($item->dataVaga)) >= date('m')) ||
+                                    date('d', strtotime($item->dataVaga)) <= date('d'))
                                 <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
                                     <div class="box">
-                                        <h3>Título da vaga</h3>
-                                        <p class="description"><span class="fw-bold"> Nome da Empresa:{{ $item->nomeEmresa }} </span></p>
-                                        <p class="description"><span class="fw-bold"> Email:{{ $item->emailEmprego }} </span> </p>
-                                        <p class="description"><span class="fw-bold"> Vagas Diponíveis:{{ $item->tempoVaga }} </span></p>
-                                        <p class="description"><span class="fw-bold"> Data de Publicação:{{ $item->created_at }} </span></p>
-                                        <p class="description"><span class="fw-bold"> Disponível até:{{ $item->dataVaga }} </span></p>
-                                        <a href="{{ route('admin.buscar.detalhes',$item->id) }}" class="btn btn-primary my-3 w-100"
-                                            id="btn-inscricao">Inscreva-se</a>
+                                        <h3>{{ $item->tituloEmprego }} </h3>
+                                        <p class="description"><span class="fw-bold"> Nome da
+                                                Empresa:{{ $item->nomeEmresa }} </span></p>
+                                        <p class="description"><span class="fw-bold"> Email:{{ $item->emailEmprego }}
+                                            </span> </p>
+                                        <p class="description"><span class="fw-bold"> Vagas
+                                                Diponíveis:{{ $item->tempoVaga }} </span></p>
+                                        <p class="description"><span class="fw-bold"> Data de Publicação:
+                                                {{ date('d/m/Y', strtotime($item->created_at)) }} </span></p>
+                                        <p class="description"><span class="fw-bold"> Disponível até:
+                                                {{ date('d/m/Y', strtotime($item->dataVaga)) }}
+                                            </span></p>
+                                        <a href="{{ route('admin.buscar.detalhes', $item->id) }}"
+                                            class="btn btn-primary my-3 w-100" id="btn-inscricao">Inscreva-se</a>
 
                                     </div>
                                 </div>

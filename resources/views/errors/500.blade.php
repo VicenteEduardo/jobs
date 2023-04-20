@@ -1,44 +1,21 @@
- @extends('layouts.merge.site')
- @section('titulo', 'Error 500')
- @section('content')
+@extends('layouts.merge.site')
+@section('titulo', '500')
+@section('content')
+    <!-- ======= APRESENTAÇÃO ======= -->
+    <section id="hero" class="hero d-flex align-items-center">
 
-     <!-- ====== Banner Start ====== -->
-     <section class="ud-page-banner">
-         <div class="container">
-             <div class="row">
-                 <div class="col-lg-12">
-                     <div class="ud-banner-content">
-                         <h1>500</h1>
-                         <p class="text-white">Aconteceu um erro no servidor</p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </section>
-     <!-- ====== Banner End ====== -->
+        <h1>500</h1>
+        <h2>The page you are looking for doesn't exist.</h2>
+        <a class="btn" href="index.html">Back to home</a>
+        <img src="assets/img/not-found.svg" class="img-fluid py-5" alt="Page Not Found">
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </section><!-- FIM DA APRESENTAÇÃO -->
 
-     <!-- ====== Error 404 Start ====== -->
-     <section class="ud-404">
-         <div class="container">
-             <div class="row">
-                 <div class="col-lg-12">
-                     <div class="ud-404-wrapper">
-                         <div class="ud-404-content">
-                             <h2 class="ud-404-title">500 - Aconteceu um erro no servidor.</h2>
-                             <h5 class="ud-404-subtitle">Talvez você possa encontrar o que precisa aqui?
-                             </h5>
-                             <ul class="ud-404-links">
-                                 <li>
-                                     <a href="{{ route('site.home') }}">Home</a>
-                                 </li>
 
-                             </ul>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </section>
-     <!-- ====== Error 404 End ====== -->
-
- @endsection
+@endsection

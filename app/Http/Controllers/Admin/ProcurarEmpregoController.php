@@ -27,9 +27,9 @@ class ProcurarEmpregoController extends Controller
             return redirect()->route('admin.home');
         } else {
             $response['vaga'] =  Vaga::find($id);
-         $response['categoriaVagas'] = CategoriaVagas::where('fk_categoria', $id)->get();
+            $response['categoriaVagas'] = CategoriaVagas::where('fk_categoria', $id)->get();
 
-            $this->Logger->log('info', 'Entrou em datalhes da   procurar emprego com o id'.$id);
+            $this->Logger->log('info', 'Entrou em datalhes da   procurar emprego com o id' . $id);
             return view('admin.buscaEmprego.detalhesVaga.index', $response);
         }
     }
@@ -79,12 +79,14 @@ class ProcurarEmpregoController extends Controller
      */
     public function show($id)
     {
+        $pesquisa = urldecode($id);
+        $res = Vaga::with('categoria')->where('tituloEmprego', 'LIKE', "%{$pesquisa}%")->count();
 
-        $res = Vaga::with('categoria')->where('tituloEmprego', urldecode($id))->count();
+
         if ($res > 0) {
             try {
-                $response['empregos'] = Vaga::with('categoria')->where('tituloEmprego', urldecode($id))->paginate(6);
-                $response['totalempregos'] = Vaga::with('categoria')->where('tituloEmprego', urldecode($id))->count();
+                $response['empregos'] = Vaga::with('categoria')->where('tituloEmprego', 'LIKE', "%{$pesquisa}%")->paginate(6);
+                $response['totalempregos'] = Vaga::with('categoria')->where('tituloEmprego', 'LIKE', "%{$pesquisa}%")->count();
                 return view('admin.buscaEmprego.detalis.index', $response);
 
                 return view('site.news.single.index', $response);
