@@ -145,7 +145,7 @@ class DashboardController extends Controller
             $response['dez'] = json_encode($dez);
 
             $response['cliente'] = User::where('level', '=', 'cliente')->count();
-            $response['Administrador'] = User::where('level', '=', 'Administrador')->count();
+            $response['Administrador'] = Empresa::where('status', '=', 'Aprovado')->count();
             $response['vagas'] = Vaga::count();
 
 
