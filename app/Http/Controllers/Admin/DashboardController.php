@@ -150,29 +150,29 @@ class DashboardController extends Controller
 
 
             //candidaturas
-            $reponse['jancanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '01')->count());
+            $reponse['jancanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '01')->count());
             $response['jancanditados'] = json_encode($reponse['jancanditados']);
-            $reponse['fevcanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '02')->count());
+            $reponse['fevcanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '02')->count());
             $response['fevcanditados'] = json_encode($reponse['fevcanditados']);
-            $reponse['marcanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '03')->count());
+            $reponse['marcanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '03')->count());
             $response['marcanditados'] = json_encode($reponse['marcanditados']);
-            $reponse['abrcanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '04')->count());
+            $reponse['abrcanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '04')->count());
             $response['abrcanditados'] = json_encode($reponse['abrcanditados']);
-            $reponse['maiocanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '05')->count());
+            $reponse['maiocanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '05')->count());
             $response['maiocanditados'] = json_encode($reponse['maiocanditados']);
-            $reponse['juncanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '06')->count());
+            $reponse['juncanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '06')->count());
             $response['juncanditados'] = json_encode($reponse['juncanditados']);
-            $reponse['julcanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '07')->count());
+            $reponse['julcanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '07')->count());
             $response['julcanditados'] = json_encode($reponse['julcanditados']);
-            $reponse['agocanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '08')->count());
+            $reponse['agocanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '08')->count());
             $response['agocanditados'] = json_encode($reponse['agocanditados']);
-            $reponse['setcanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '09')->count());
+            $reponse['setcanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '09')->count());
             $response['setcanditados'] = json_encode($reponse['setcanditados']);
-            $reponse['outcanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '10')->count());
+            $reponse['outcanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '10')->count());
             $response['outcanditados'] = json_encode($reponse['outcanditados']);
-            $reponse['novcanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '11')->count());
+            $reponse['novcanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '11')->count());
             $response['novcanditados'] = json_encode($reponse['novcanditados']);
-            $reponse['dezcanditados'] = json_encode(Candidaturas::with('canditados')->whereMonth('created_at', '=', '12')->count());
+            $reponse['dezcanditados'] = json_encode(Candidaturas::whereMonth('created_at', '=', '12')->count());
             $response['dezcanditados'] = json_encode($reponse['dezcanditados']);
 
             //empresas

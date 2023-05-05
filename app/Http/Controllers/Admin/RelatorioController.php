@@ -20,7 +20,13 @@ class RelatorioController extends Controller
     }
     public function vaga()
     {
-        $response['vagaPublocadas'] = Vaga::where('fk_user', Auth::user()->id)->get();
+
+        if (Auth::user()->level == "Administrador-Master") {
+            $response['vagaPublocadas'] = Vaga::get();
+        } else {
+            $response['vagaPublocadas'] = Vaga::where('fk_user', Auth::user()->id)->get();
+        }
+
         $pdf = PDF::loadview('admin.pdf.vaga.index', $response);
 
         //Logger
@@ -29,11 +35,18 @@ class RelatorioController extends Controller
     }
     public function inscritos()
     {
-        $response['canditados'] = Candidaturas::with('canditados')->where('fk_publicador', Auth::user()->id)->paginate(10);
+
+        if (Auth::user()->level == "Administrador-Master") {
+            $response['canditados'] = Candidaturas::with('canditados')->paginate(10);
+        } else {
+            $response['canditados'] = Candidaturas::with('canditados')->where('fk_publicador', Auth::user()->id)->paginate(10);
+        }
+
+
         $pdf = PDF::loadview('admin.pdf.inscritos.index', $response);
 
         //Logger
-        $this->Logger->log('info', 'Imprimiu uma lista de vagas ');
+        $this->Logger->log('info', 'Imprimiu uma lista de canditados ');
         return $pdf->setPaper('A4', 'landscape')->stream('pdf');
     }
 }

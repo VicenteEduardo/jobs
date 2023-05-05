@@ -9,7 +9,7 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Relatório de Pagamentos</title>
+    <title>Relatório de Inscritos</title>
 </head>
 
 <body style='height:auto; width:100%;  no-repeat center;'>
