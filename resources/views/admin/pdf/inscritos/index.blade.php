@@ -7,7 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="site/assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="site/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="site/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="site/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="site/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="site/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Relatório de Inscritos</title>
 </head>
