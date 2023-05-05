@@ -28,7 +28,6 @@ class RelatorioController extends Controller
         }
 
         $pdf = PDF::loadview('admin.pdf.vaga.index', $response);
-
         //Logger
         $this->Logger->log('info', 'Imprimiu uma lista de vagas ');
         return $pdf->setPaper('A4', 'landscape')->stream('pdf');
@@ -42,9 +41,7 @@ class RelatorioController extends Controller
             $response['canditados'] = Candidaturas::with('canditados')->where('fk_publicador', Auth::user()->id)->paginate(10);
         }
 
-
         $pdf = PDF::loadview('admin.pdf.inscritos.index', $response);
-
         //Logger
         $this->Logger->log('info', 'Imprimiu uma lista de canditados ');
         return $pdf->setPaper('A4', 'landscape')->stream('pdf');
