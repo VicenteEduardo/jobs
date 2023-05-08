@@ -178,32 +178,32 @@ class DashboardController extends Controller
             //empresas
 
 
-            $reponse['janEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '01')->count());
+            $reponse['janEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '01')->count());
             $response['janEmpresa'] = json_encode($reponse['jancanditados']);
-            $reponse['fevEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '02')->count());
+            $reponse['fevEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '02')->count());
             $response['fevEmpresa'] = json_encode($reponse['fevcanditados']);
-            $reponse['marEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '03')->count());
+            $reponse['marEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '03')->count());
             $response['marEmpresa'] = json_encode($reponse['marcanditados']);
-            $reponse['abrEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '04')->count());
+            $reponse['abrEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '04')->count());
             $response['abrEmpresa'] = json_encode($reponse['abrcanditados']);
-            $reponse['maioEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '05')->count());
+            $reponse['maioEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '05')->count());
             $response['maioEmpresa'] = json_encode($reponse['maiocanditados']);
-            $reponse['junEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '06')->count());
+            $reponse['junEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '06')->count());
             $response['junEmpresa'] = json_encode($reponse['juncanditados']);
-            $reponse['julEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '07')->count());
+            $reponse['julEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '07')->count());
             $response['julEmpresa'] = json_encode($reponse['julcanditados']);
-            $reponse['agoEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '08')->count());
+            $reponse['agoEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '08')->count());
             $response['agoEmpresa'] = json_encode($reponse['agocanditados']);
-            $reponse['setEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '09')->count());
+            $reponse['setEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '09')->count());
             $response['setEmpresa'] = json_encode($reponse['setcanditados']);
-            $reponse['outEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '10')->count());
+            $reponse['outEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '10')->count());
             $response['outEmpresa'] = json_encode($reponse['outcanditados']);
-            $reponse['novEmpresa'] = json_encode(Empresa::whereMonth('created_at', '=', '11')->count());
+            $reponse['novEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '11')->count());
             $response['novEmpresa'] = json_encode($reponse['novcanditados']);
-            $reponse['dezEmpresa'] = json_encode(Candidaturas::whereMonth('created_at', '=', '12')->count());
+            $reponse['dezEmpresa'] = json_encode(Empresa::where('status', '=', 'Aprovado')->whereMonth('created_at', '=', '12')->count());
             $response['dezEmpresa'] = json_encode($reponse['dezcanditados']);
 
-            $response['empresaCount'] = json_encode(Empresa::count());
+            $response['empresaCount'] = json_encode(Empresa::where('status', '=', 'Aprovado')->count());
             $response['Vagas'] = Vaga::count();
             $response['candidatos'] =   User::where('level', 'cliente')->count();
             return view('admin.home.index', $response);
